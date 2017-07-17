@@ -32,3 +32,5 @@ app.get("/survey", function(req, res) {
 app.use(express.static('app/public'));
 app.use(express.static('app/images'));
 app.use(express.static('app/data'));
+
+// app.use(express.static('app'));
