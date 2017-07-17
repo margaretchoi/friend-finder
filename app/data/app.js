@@ -24,13 +24,14 @@ function buildSurvey() {
 
 	$('#survey-content').append($('<input>').attr('type', 'submit').attr('value', 'Submit').click(submitSurvey));
 
-
 }
 
 function submitSurvey () {
 	alert('Submitted');
 
 	let surveyResponse = {
+		name: $("dogname").val().trim();
+		photo: $("dogphoto").val().trim();
 		q1: $("question1").val(),
         q2: $("question2").val(),
         q3: $("question3").val(),
@@ -44,5 +45,11 @@ function submitSurvey () {
 	};
 
 	console.log(surveyResponse);
+
+	$.post("/api/new", surveyResponse)
+	.done(function(data) {
+		console.log(data);
+		alert("Adding character...");
+	});
 };
 
