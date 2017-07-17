@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Furry Friend Finder</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="friends.js"></script>
+	<script src="app.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Handlee|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<main>
+			<h1>Furry Friend Survey</h1>
+			<p>
+				Answer these basic questions about your dog. <br>
+
+				We’ll respond with a furry friend compatible for play dates! 
+
+			</p>
+			<form id="friend-survey" method="POST">
+				<label>Dog name:*</label><br>
+				<input type="text" name="dogname" required>
+				<br><br>
+				<label>Dog photo:*</label><br>
+				<input type="url" name="dogphoto" required>
+				<div id="survey-content"></div>
+			</form> 
+		</main>
+	</div>
+	<footer><a href="/" >Home</a></footer>
+</body>
+</html>

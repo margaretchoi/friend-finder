@@ -1,0 +1,51 @@
+.container {
+	width: 1024px;
+	margin: 0 auto;
+	padding: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Handlee', arial, cursive;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h4 { font-size: 1.12em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+
+p {
+	font-family: 'Open Sans', arial, sans-serif;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	background-image: url('cover_dog.jpg');
+	background-size: 100%;
+	background-origin: content-box;
+	background-repeat: no-repeat;	
+    background-attachment: fixed;
+	font-family: 'Open Sans', sans-serif;
+	color: #fff;
+
+}
+
+section {
+	width: 50%;
+	flex-grow: 1;
+}
+
+main {
+	width: 50%;
+	height: 100%;
+	flex-grow: 1;
+	margin-bottom: 50px;
+}
+
+
