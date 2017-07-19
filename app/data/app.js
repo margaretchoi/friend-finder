@@ -19,19 +19,18 @@ function buildSurvey() {
 	for (let i=0; i < questionsArray.length; i++) {
 		let listNum = i + 1;
 		$('#survey-content').append('<br><label>' + listNum + '. ' + questionsArray[i] + '</label><br>');
-		$('#survey-content').append('<select name="question' + listNum + '""><option value="1">1 (Strongly Disagree)</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 (Strongly Agree)</option></select><br>');
+		$('#survey-content').append('<select id="question' + listNum + '""><option value="1">1 (Strongly Disagree)</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 (Strongly Agree)</option></select><br>');
 	}
 
-	$('#survey-content').append($('<input>').attr('type', 'submit').attr('value', 'Submit').click(submitSurvey));
+	$('#survey-content').append($('<input>').attr('type', 'submit').attr('value', 'Submit').attr('class', 'submit').click(submitSurvey));
 
 }
 
 function submitSurvey () {
-	alert('Submitted');
-
+	
 	let surveyResponse = {
-		name: $("dogname").val().trim();
-		photo: $("dogphoto").val().trim();
+		name: $("#dogname").val().trim(),
+		photo: $("#dogphoto").val().trim(),
 		q1: $("question1").val(),
         q2: $("question2").val(),
         q3: $("question3").val(),
@@ -49,7 +48,7 @@ function submitSurvey () {
 	$.post("/api/new", surveyResponse)
 	.done(function(data) {
 		console.log(data);
-		alert("Adding character...");
+		alert("Adding new friend...");
 	});
 };
 
