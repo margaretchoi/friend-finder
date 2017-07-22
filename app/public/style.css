@@ -51,6 +51,40 @@ main {
 	margin-bottom: 50px;
 }
 
+nav {
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+	margin: 0px;
+	list-style: none;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+nav li {
+/*	display: inline-block;*/
+
+	padding: 10px 0px;
+	margin-right: 20px;
+}
+
+nav li a {
+	color: #fff;
+	text-decoration: none;
+	vertical-align: middle;
+}
+nav li a:hover {
+	color: #efefef;
+}
+.paw {
+	width: 40px;
+	height: 40px;
+}
+
 button,
 .submit {
 	padding: 3% 8%;
@@ -58,7 +92,7 @@ button,
 	border-radius: 5px;
 	font-size: 1em;
 	margin: 5% 0%;
-	background-color: transparent;
+	background-color: #fff;
 	text-transform: uppercase;
 	box-shadow: 3px 3px 3px #000;
 }
@@ -110,4 +144,9 @@ button,
     cursor: pointer;
 }
 
+.clearfix::after {
+    content:"";
+    display:block;
+    clear:both;
+}
 
