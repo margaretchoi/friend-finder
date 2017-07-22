@@ -29,32 +29,8 @@ app.listen(PORT, function() {
 let htmlRoutes = require('./app/routing/htmlRoutes');
 app.use('/', htmlRoutes);
 
-// let apiRoutes = require('./app/routing/apiRoutes');
-// app.use('/api', apiRoutes);
+let apiRoutes = require('./app/routing/apiRoutes');
+app.use('/api', apiRoutes);
 
-// let furryFriends = [
-// 	name: 'Ivy',
-// 	photo: 'https://pbs.twimg.com/profile_images/875221533341302786/QCno3P2m_400x400.jpg',
-// 	q1: 5,
-//     q2: 5,
-//     q3: 5,
-//     q4: 5,
-//     q5: 5,
-//     q6: 5,
-//     q7: 5,
-// 	q8: 5,
-// 	q9: 5,
-// 	q10: 5
-// ];
 
-// Create New Friends - takes in JSON input
-// app.post("/api/new", function(req, res) {
-//   let newfriend = req.body;
-//   newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
 
-//   console.log(newfriend);
-
-//   furryFriends.push(newfriend);
-
-//   res.json(newfriend);
-// });

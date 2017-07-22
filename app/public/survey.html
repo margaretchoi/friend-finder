@@ -3,7 +3,6 @@
 <head>
 	<title>Furry Friend Finder</title>
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="friends.js"></script>
 	<script src="app.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Handlee|Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -27,7 +26,115 @@
 				<div id="survey-content"></div>
 			</form> 
 		</main>
+		<section id="results">
+			<div id="myModal" class="modal">
+
+			  <!-- Modal content -->
+			  <div class="modal-content">
+			    <span class="close">&times;</span>
+			    <p>Your match!</p>
+			  </div>
+
+			</div>
+		</section>
 	</div>
-	<footer><a href="/" >Home</a></footer>
+	<footer>
+		<a href="/" >Home</a>
+		<a href="/api/friends" >API</a>
+	</footer>
 </body>
 </html>
+
+<script type="text/javascript">
+		
+	$(document).ready(buildSurvey);
+
+	// Builds the survey and 
+	function buildSurvey() {
+		console.log('Building survey ...')
+
+		let questionsArray = [
+			'I need a large area to play in',
+			'I like to play outside more than indoors',
+			'I like the noises squeaky toys make',
+			'Fetch is one of my favorite games',
+			'I am good at sharing my toys and attention',
+			'I have a high energy level',
+			'I tend to play rough',
+			'I prefer to play with my hooman friends',
+			'I make friends easily',
+			'I am easy to get along with'
+		];
+
+		for (let i=0; i < questionsArray.length; i++) {
+			let listNum = i + 1;
+			$('#survey-content').append('<br><label>' + listNum + '. ' + questionsArray[i] + '</label><br>');
+			$('#survey-content').append('<select id="question' + listNum + '""><option value="1">1 (Strongly Disagree)</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5 (Strongly Agree)</option></select><br>');
+		}
+
+		$('#survey-content').append($('<input>').attr('type', 'submit').attr('value', 'Submit').attr('class', 'submit'));
+
+		$('.submit').click(function(){
+		    submitSurvey();
+		});
+
+	}
+
+
+	function submitSurvey () {
+		
+		let surveyResponse = {
+			name: $("#dogname").val().trim(),
+			photo: $("#dogphoto").val().trim(),
+			scores: [ 
+				$("#question1").val(),
+		        $("#question2").val(),
+		        $("#question3").val(),
+		        $("#question4").val(),
+		        $("#question5").val(),
+		        $("#question6").val(),
+		        $("#question7").val(),
+		    	$("#question8").val(),
+				$("#question9").val(),
+				$("#question10").val()
+			]
+		};
+
+		console.log(surveyResponse);
+
+	     $.post("/api/friends", 
+	     	surveyResponse,
+	        function(data) {
+				console.log(JSON.stringify(data, null, 2));
+				showModal(data);
+	        });
+	};
+
+	function showModal(result) {
+
+		console.log('Result', result);
+		console.log('result.name', result.name);
+
+		// Get the modal
+		let modal = $('.modal');
+		let span = $('.close');
+
+		console.log(modal);
+
+		span.click(function(){
+    		modal.attr('display', 'none');
+		});
+
+		$('.modal-content').append('<h2>' + result.name + '</h2>');
+		$('.modal-content').append('<img src="' + result.photo + '">');
+		
+		modal.css('display', 'block');
+
+	}
+
+		$('.close').click(function(){
+    		$('.modal').css('display', 'none');
+		});
+
+
+</script>
